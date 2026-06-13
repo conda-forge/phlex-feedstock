@@ -17,7 +17,7 @@ fmt:
 libboost_devel:
 - '1.88'
 root_base:
-- 6.38.0
+- 6.38.4
 root_cxx_standard:
 - '23'
 spdlog:
