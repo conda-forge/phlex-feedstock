@@ -10,7 +10,7 @@ source:
   sha256: 37833e1b976ec534d8da5b9ec412f297426e2e534ae8e471124f6a1859fe9841
 
 build:
-  number: 2
+  number: 3
   skip:
     # phlex requires GCC 15 (libstdc++ 15 for std::vector(from_range, ...))
     # and is not yet supported on macOS (libc++ lacks std::jthread)
