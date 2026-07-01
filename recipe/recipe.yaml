@@ -17,6 +17,8 @@ build:
     - win
     - osx
     - match(root_cxx_standard, "<23")
+    # the python/numba plugin requires find_package(Python 3.12 ...)
+    - match(python, "<3.12")
   script: build.sh
 
 requirements:
@@ -25,6 +27,7 @@ requirements:
     - ${{ stdlib('c') }}
     - cmake
     - make
+    - pkg-config
   host:
     - cetmodules
     - libboost-devel
@@ -32,8 +35,14 @@ requirements:
     - tbb-devel
     - spdlog
     - libjsonnet
+    # required by the python/numba plugin (plugins/python)
+    - libffi
+    - python
+    - numpy
     - root_base
     - root_cxx_standard
+  run:
+    - python
   run_exports:
     - ${{ pin_subpackage('phlex', upper_bound='x.x') }}
 
