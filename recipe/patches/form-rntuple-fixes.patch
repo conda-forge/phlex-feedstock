@@ -1,0 +1,72 @@
+diff -ruN a/form/root_storage/root_rfield_read_container.cpp b/form/root_storage/root_rfield_read_container.cpp
+--- a/form/root_storage/root_rfield_read_container.cpp	2026-07-14 18:46:40.326072682 +0200
++++ b/form/root_storage/root_rfield_read_container.cpp	2026-07-14 18:47:02.841949847 +0200
+@@ -101,7 +101,9 @@
+       }
+     }
+ 
+-    if (id >= (int)m_reader->GetNEntries())
++    // StorageReader hands out 1-based rows (see sequential_row_from_index_id
++    // and the index-map builder); RNTuple entries are 0-based.
++    if (id < 1 || id > (int)m_reader->GetNEntries())
+       return false;
+ 
+     //Using RNTupleView<> to read instead of reusing REntry gives us full schema evolution support: the ROOT feature that lets us read files with an old class version into a new class version's memory.
+@@ -110,7 +112,7 @@
+ 
+     m_view->BindRawPtr(buffer.get());
+     try {
+-      (*m_view)(id);
++      (*m_view)(id - 1);
+     } catch (const ROOT::RException& e) {
+       throw std::runtime_error("ROOT_RField_Read_ContainerImp::read got a ROOT exception: " +
+                                std::string(e.what()));
+diff -ruN a/form/root_storage/root_rntuple_write_container.hpp b/form/root_storage/root_rntuple_write_container.hpp
+--- a/form/root_storage/root_rntuple_write_container.hpp	2026-07-14 18:31:46.439725789 +0200
++++ b/form/root_storage/root_rntuple_write_container.hpp	2026-07-15 13:49:41.020121115 +0200
+@@ -5,6 +5,8 @@
+ 
+ #include "storage/storage_write_association.hpp"
+ 
++#include "RVersion.h"
++
+ #include <memory>
+ #include <string>
+ 
+@@ -14,15 +16,27 @@
+   class RNTupleWriter;
+   class RNTupleModel;
+ 
++#if ROOT_VERSION_CODE >= ROOT_VERSION(6, 40, 0)
++  namespace Detail {
++    class RRawPtrWriteEntry;
++  }
++#else
+   namespace Experimental {
+     namespace Detail {
+       class RRawPtrWriteEntry;
+     }
+   }
++#endif
+ }
+ 
+ namespace form::detail::experimental {
+ 
++#if ROOT_VERSION_CODE >= ROOT_VERSION(6, 40, 0)
++  using root_raw_ptr_write_entry = ROOT::Detail::RRawPtrWriteEntry;
++#else
++  using root_raw_ptr_write_entry = ROOT::Experimental::Detail::RRawPtrWriteEntry;
++#endif
++
+   class ROOT_RNTuple_Write_ContainerImp : public Storage_Write_Association {
+   public:
+     ROOT_RNTuple_Write_ContainerImp(std::string const& name);
+@@ -43,7 +57,7 @@
+     //State shared by ROOT_RField_ContainerImps
+     std::unique_ptr<ROOT::RNTupleWriter> m_writer;
+     std::unique_ptr<ROOT::RNTupleModel> m_model;
+-    std::unique_ptr<ROOT::Experimental::Detail::RRawPtrWriteEntry> m_entry;
++    std::unique_ptr<root_raw_ptr_write_entry> m_entry;
+   };
+ }
+ 

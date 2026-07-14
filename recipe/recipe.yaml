@@ -8,9 +8,15 @@ package:
 source:
   url: https://github.com/Framework-R-D/phlex/archive/refs/tags/v${{ version }}.tar.gz
   sha256: 1689fced4229b82be54269b2e785ad75f65869dbbbe0275194620294bc9b9095
+  patches:
+    # Fixes for FORM's RNTuple backend (to be offered upstream): the
+    # RRawPtrWriteEntry forward declaration predates ROOT 6.40's namespace
+    # move (now version-conditional so both root_base variants build), and
+    # the reader mixed 1-based rows with 0-based RNTuple entries.
+    - patches/form-rntuple-fixes.patch
 
 build:
-  number: 0
+  number: 1
   skip:
     # phlex requires GCC 15 (libstdc++ 15 for std::vector(from_range, ...))
     # and is not yet supported on macOS (libc++ lacks std::jthread)
