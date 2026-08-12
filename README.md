@@ -199,6 +199,3 @@ Feedstock Maintainers
 
 * [@olantwin](https://github.com/olantwin/)
 
-
-<!-- dummy commit to enable rerendering -->
-
