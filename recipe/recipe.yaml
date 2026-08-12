@@ -16,7 +16,7 @@ source:
     - patches/form-rntuple-fixes.patch
 
 build:
-  number: 1
+  number: 2
   skip:
     # phlex requires GCC 15 (libstdc++ 15 for std::vector(from_range, ...))
     # and is not yet supported on macOS (libc++ lacks std::jthread)
@@ -56,6 +56,8 @@ tests:
   - package_contents:
       lib:
         - phlex_core
+      files:
+        - etc/conda/activate.d/phlex_activate.sh
 
 about:
   homepage: https://github.com/Framework-R-D/phlex
