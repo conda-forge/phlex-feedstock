@@ -27,7 +27,7 @@ pin_run_as_build:
 python:
 - 3.14.* *_cp314
 root_base:
-- 6.38.4
+- 6.38.6
 root_cxx_standard:
 - '23'
 spdlog:
