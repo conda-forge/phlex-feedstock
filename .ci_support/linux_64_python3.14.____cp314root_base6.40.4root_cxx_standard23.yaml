@@ -25,9 +25,9 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.13.* *_cp313
+- 3.14.* *_cp314
 root_base:
-- 6.38.4
+- 6.40.4
 root_cxx_standard:
 - '23'
 spdlog:
