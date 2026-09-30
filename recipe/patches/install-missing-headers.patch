@@ -1,0 +1,30 @@
+diff -ruN a/phlex/core/CMakeLists.txt b/phlex/core/CMakeLists.txt
+--- a/phlex/core/CMakeLists.txt	2026-09-30 18:46:52.190429799 +0200
++++ b/phlex/core/CMakeLists.txt	2026-09-30 18:49:44.377213949 +0200
+@@ -53,6 +53,7 @@
+     producer_catalog.hpp
+     make_computational_edges.hpp
+     filter.hpp
++    fold_join_node.hpp
+     framework_graph.hpp
+     fwd.hpp
+     glue.hpp
+@@ -85,6 +86,7 @@
+ )
+ install(
+   FILES
++    detail/accumulator_node.hpp
+     detail/filter_impl.hpp
+     detail/make_algorithm_name.hpp
+     detail/maybe_predicates.hpp
+diff -ruN a/phlex/utilities/CMakeLists.txt b/phlex/utilities/CMakeLists.txt
+--- a/phlex/utilities/CMakeLists.txt	2026-09-30 18:46:52.195932896 +0200
++++ b/phlex/utilities/CMakeLists.txt	2026-09-30 18:46:52.215277625 +0200
+@@ -19,6 +19,7 @@
+     bulleted_list.hpp
+     max_allowed_parallelism.hpp
+     resource_usage.hpp
++    signed_size.hpp
+     simple_ptr_map.hpp
+     sized_tuple.hpp
+     sleep_for.hpp

@@ -1,5 +1,5 @@
 context:
-  version: "0.3.2"
+  version: "0.4.0"
 
 package:
   name: phlex
@@ -7,16 +7,15 @@ package:
 
 source:
   url: https://github.com/Framework-R-D/phlex/archive/refs/tags/v${{ version }}.tar.gz
-  sha256: 0b10cd4ab6c43019fb2c216014f4666bc643647a06a464815a2a5c6f1536ce89
+  sha256: 4b30a5eb82127087df84010fe80227a4357d893c6c35aadec4c87a817303552b
   patches:
-    # Fixes for FORM's RNTuple backend (to be offered upstream): the
-    # RRawPtrWriteEntry forward declaration predates ROOT 6.40's namespace
-    # move (now version-conditional so both root_base variants build), and
-    # the reader mixed 1-based rows with 0-based RNTuple entries.
-    - patches/form-rntuple-fixes.patch
+    # Install headers that public headers include but upstream's install()
+    # lists miss (fold_join_node.hpp, detail/accumulator_node.hpp,
+    # signed_size.hpp); to be offered upstream.
+    - patches/install-missing-headers.patch
 
 build:
-  number: 3
+  number: 0
   skip:
     # phlex requires GCC 15 (libstdc++ 15 for std::vector(from_range, ...))
     # and is not yet supported on macOS (libc++ lacks std::jthread)
@@ -39,6 +38,7 @@ requirements:
     - libboost-devel
     - fmt
     - tbb-devel
+    - ms-gsl
     - spdlog
     - libjsonnet
     # required by the python/numba plugin (plugins/python)
@@ -49,6 +49,12 @@ requirements:
     - root_cxx_standard
   run:
     - python
+    # headers and CMake configs of dependencies exported by phlexConfig.cmake
+    - libboost-devel
+    - fmt
+    - tbb-devel
+    - ms-gsl
+    - spdlog
   run_exports:
     - ${{ pin_subpackage('phlex', upper_bound='x.x') }}
 
@@ -58,6 +64,18 @@ tests:
         - phlex_core
       files:
         - etc/conda/activate.d/phlex_activate.sh
+  # build a plugin against the installed package via find_package(phlex)
+  - files:
+      recipe:
+        - test/
+    requirements:
+      run:
+        - ${{ compiler('cxx') }}
+        - cmake
+        - make
+    script:
+      - cmake -S test -B build -DCMAKE_PREFIX_PATH=${PREFIX}
+      - cmake --build build
 
 about:
   homepage: https://github.com/Framework-R-D/phlex
