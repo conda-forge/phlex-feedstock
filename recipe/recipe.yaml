@@ -8,11 +8,6 @@ package:
 source:
   url: https://github.com/Framework-R-D/phlex/archive/refs/tags/v${{ version }}.tar.gz
   sha256: 0067d84f3c132a63f5c5a447efac706ae3b79e841733024ea51e7428fd9dd670
-  patches:
-    # Install headers that public headers include but upstream's install()
-    # lists miss (fold_join_node.hpp, detail/accumulator_node.hpp,
-    # signed_size.hpp); to be offered upstream.
-    - patches/install-missing-headers.patch
 
 build:
   number: 0
