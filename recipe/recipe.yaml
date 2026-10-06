@@ -1,5 +1,5 @@
 context:
-  version: "0.4.1"
+  version: "0.4.2"
 
 package:
   name: phlex
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/Framework-R-D/phlex/archive/refs/tags/v${{ version }}.tar.gz
-  sha256: 0067d84f3c132a63f5c5a447efac706ae3b79e841733024ea51e7428fd9dd670
+  sha256: 117fa5cf2d9cb1cdd43c157f5961758e3e4fec60951b637743dcdfd6a3e1a393
 
 build:
   number: 0
