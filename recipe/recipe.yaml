@@ -28,6 +28,18 @@ requirements:
     - cmake
     - make
     - pkg-config
+    - if: build_platform != target_platform
+      then:
+        - python
+        - cross-python_${{ target_platform }}
+        - numpy
+        # Findjsonnet.cmake only looks for the headers and libraries once it
+        # has found and run the jsonnet CLI, which must be a build-machine
+        # binary when cross-compiling.
+        - libjsonnet
+        # cetmodules pulls a target bash into host; give `#!/usr/bin/env bash`
+        # scripts such as the pkg-config wrapper a build-machine one.
+        - bash
   host:
     - cetmodules
     - libboost-devel
@@ -59,18 +71,21 @@ tests:
         - phlex_core
       files:
         - etc/conda/activate.d/phlex_activate.sh
-  # build a plugin against the installed package via find_package(phlex)
-  - files:
-      recipe:
-        - test/
-    requirements:
-      run:
-        - ${{ compiler('cxx') }}
-        - cmake
-        - make
-    script:
-      - cmake -S test -B build -DCMAKE_PREFIX_PATH=${PREFIX}
-      - cmake --build build
+  # build a plugin against the installed package via find_package(phlex);
+  # needs to run the target's cmake and compiler, so native builds only
+  - if: build_platform == target_platform
+    then:
+      - files:
+          recipe:
+            - test/
+        requirements:
+          run:
+            - ${{ compiler('cxx') }}
+            - cmake
+            - make
+        script:
+          - cmake -S test -B build -DCMAKE_PREFIX_PATH=${PREFIX}
+          - cmake --build build
 
 about:
   homepage: https://github.com/Framework-R-D/phlex

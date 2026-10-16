@@ -1,4 +1,14 @@
 #!/bin/bash -e
+if [[ "${build_platform}" != "${target_platform}" ]]; then
+    # Under CMP0190 (set NEW by cetmodules' cmake_minimum_required),
+    # FindPython runs the target interpreter through the cross-compiling
+    # emulator. cross-python has already replaced $PREFIX/bin/python with a
+    # build-machine shim, so a pass-through emulator is enough. The shim
+    # reports the build env's numpy headers, which CMAKE_FIND_ROOT_PATH
+    # rejects, so point FindPython at the host numpy directly.
+    CMAKE_ARGS="${CMAKE_ARGS} -DCMAKE_CROSSCOMPILING_EMULATOR=env -DPython_EXECUTABLE=${PREFIX}/bin/python"
+    CMAKE_ARGS="${CMAKE_ARGS} -DPython_NumPy_INCLUDE_DIR=${SP_DIR}/numpy/_core/include"
+fi
 cmake ${CMAKE_ARGS} -S ${SRC_DIR} -B build --preset default \
     -DCMAKE_CXX_STANDARD=${root_cxx_standard} \
     -DCMAKE_INSTALL_LIBDIR=lib \
