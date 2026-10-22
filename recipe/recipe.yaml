@@ -12,10 +12,11 @@ source:
 build:
   number: 0
   skip:
-    # phlex requires GCC 15 (libstdc++ 15 for std::vector(from_range, ...))
-    # and is not yet supported on macOS (libc++ lacks std::jthread)
+    # phlex needs GCC 15 / libc++ 21 (std::vector(from_range, ...),
+    # std::jthread), which global pinning provides. On macOS, only
+    # Apple silicon is built.
     - win
-    - osx
+    - osx and x86_64
     - match(root_cxx_standard, "<23")
     # the python/numba plugin requires find_package(Python 3.12 ...)
     - match(python, "<3.12")
