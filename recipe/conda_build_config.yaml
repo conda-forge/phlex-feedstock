@@ -3,3 +3,10 @@
 # https://conda-forge.org/docs/maintainer/knowledge_base#newer-c-features-with-old-sdk
 c_stdlib_version:  # [osx]
   - "13.3"         # [osx]
+# root_base on osx requires the libc++ headers of the clang that cling was
+# built with (libcxx-devel 20), so environments that combine ROOT and a
+# compiler need clang 20. Build with it too, as root-feedstock does.
+c_compiler_version:    # [osx]
+  - 20                 # [osx]
+cxx_compiler_version:  # [osx]
+  - 20                 # [osx]
