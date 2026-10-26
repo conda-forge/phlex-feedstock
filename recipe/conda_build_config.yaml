@@ -1,0 +1,5 @@
+# std::format of floating-point values uses std::to_chars, which libc++
+# only provides from macOS 13.3. See
+# https://conda-forge.org/docs/maintainer/knowledge_base#newer-c-features-with-old-sdk
+c_stdlib_version:  # [osx]
+  - "13.3"         # [osx]
