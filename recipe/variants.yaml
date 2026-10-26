@@ -1,12 +1,15 @@
 # std::format of floating-point values uses std::to_chars, which libc++
 # only provides from macOS 13.3. See
 # https://conda-forge.org/docs/maintainer/knowledge_base#newer-c-features-with-old-sdk
-c_stdlib_version:  # [osx]
-  - "13.3"         # [osx]
+c_stdlib_version:
+  - if: osx
+    then: "13.3"
 # root_base on osx requires the libc++ headers of the clang that cling was
 # built with (libcxx-devel 20), so environments that combine ROOT and a
 # compiler need clang 20. Build with it too, as root-feedstock does.
-c_compiler_version:    # [osx]
-  - 20                 # [osx]
-cxx_compiler_version:  # [osx]
-  - 20                 # [osx]
+c_compiler_version:
+  - if: osx
+    then: "20"
+cxx_compiler_version:
+  - if: osx
+    then: "20"
