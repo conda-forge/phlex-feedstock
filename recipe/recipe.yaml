@@ -10,7 +10,7 @@ source:
   sha256: 2dd95ed463971221c3f8d58893729ebdcd79d1da12d891038237b0eab872a864
 
 build:
-  number: 0
+  number: 1
   skip:
     # phlex needs GCC 15 / libc++ 21 (std::vector(from_range, ...),
     # std::jthread), which global pinning provides. On macOS, only
@@ -63,6 +63,14 @@ requirements:
     - tbb-devel
     - ms-gsl
     - spdlog
+  run_constraints:
+    # phlex's public headers need GCC 15's libstdc++ (std::vector(from_range,
+    # ...) in core/registration_api.hpp), so plugins built against phlex do
+    # too. This keeps an environment that has phlex from resolving to an
+    # older libstdc++ for its compiler.
+    - if: linux
+      then:
+        - libstdcxx-devel_${{ target_platform }} >=15
   run_exports:
     - ${{ pin_subpackage('phlex', upper_bound='x.x') }}
 
