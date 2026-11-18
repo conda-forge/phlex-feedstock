@@ -28,7 +28,7 @@ requirements:
     - ${{ stdlib('c') }}
     - cmake
     - make
-    - pkg-config
+    - pkgconf
     - if: build_platform != target_platform
       then:
         - python
