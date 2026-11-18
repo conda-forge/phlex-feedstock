@@ -1,7 +1,7 @@
 About phlex-feedstock
 =====================
 
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/phlex-feedstock/blob/main/LICENSE.txt)
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/phlex-feedstock-libstdcxx-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/Framework-R-D/phlex
 
@@ -25,8 +25,8 @@ Current build status
 <table><tr>
     <td>GitHub Actions</td>
     <td>
-      <a href="https://github.com/conda-forge/phlex-feedstock/actions/workflows/conda-build.yml">
-        <img src="https://github.com/conda-forge/phlex-feedstock/actions/workflows/conda-build.yml/badge.svg?event=push&branch=main">
+      <a href="https://github.com/conda-forge/phlex-feedstock-libstdcxx-feedstock/actions/workflows/conda-build.yml">
+        <img src="https://github.com/conda-forge/phlex-feedstock-libstdcxx-feedstock/actions/workflows/conda-build.yml/badge.svg?event=push&branch=main">
       </a>
     </td>
   </tr>
@@ -36,8 +36,8 @@ Current build status
     <td>
       <details>
         <summary>
-          <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=28602&branchName=main">
-            <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/phlex-feedstock?branchName=main">
+          <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=None&branchName=main">
+            <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/phlex-feedstock-libstdcxx-feedstock?branchName=main">
           </a>
         </summary>
         <table>
@@ -45,43 +45,43 @@ Current build status
           <tbody><tr>
               <td>osx_arm64_python3.12.____cpythonroot_base6.38.6root_cxx_standard23</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=28602&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/phlex-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_python3.12.____cpythonroot_base6.38.6root_cxx_standard23" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=None&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/phlex-feedstock-libstdcxx-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_python3.12.____cpythonroot_base6.38.6root_cxx_standard23" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>osx_arm64_python3.12.____cpythonroot_base6.40.4root_cxx_standard23</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=28602&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/phlex-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_python3.12.____cpythonroot_base6.40.4root_cxx_standard23" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=None&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/phlex-feedstock-libstdcxx-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_python3.12.____cpythonroot_base6.40.4root_cxx_standard23" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>osx_arm64_python3.13.____cp313root_base6.38.6root_cxx_standard23</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=28602&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/phlex-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_python3.13.____cp313root_base6.38.6root_cxx_standard23" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=None&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/phlex-feedstock-libstdcxx-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_python3.13.____cp313root_base6.38.6root_cxx_standard23" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>osx_arm64_python3.13.____cp313root_base6.40.4root_cxx_standard23</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=28602&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/phlex-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_python3.13.____cp313root_base6.40.4root_cxx_standard23" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=None&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/phlex-feedstock-libstdcxx-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_python3.13.____cp313root_base6.40.4root_cxx_standard23" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>osx_arm64_python3.14.____cp314root_base6.38.6root_cxx_standard23</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=28602&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/phlex-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_python3.14.____cp314root_base6.38.6root_cxx_standard23" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=None&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/phlex-feedstock-libstdcxx-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_python3.14.____cp314root_base6.38.6root_cxx_standard23" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>osx_arm64_python3.14.____cp314root_base6.40.4root_cxx_standard23</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=28602&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/phlex-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_python3.14.____cp314root_base6.40.4root_cxx_standard23" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=None&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/phlex-feedstock-libstdcxx-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_python3.14.____cp314root_base6.40.4root_cxx_standard23" alt="variant">
                 </a>
               </td>
             </tr>
