@@ -10,7 +10,7 @@ source:
   sha256: 2dd95ed463971221c3f8d58893729ebdcd79d1da12d891038237b0eab872a864
 
 build:
-  number: 1
+  number: 2
   skip:
     # phlex needs GCC 15 / libc++ 21 (std::vector(from_range, ...),
     # std::jthread), which global pinning provides. On macOS, only
